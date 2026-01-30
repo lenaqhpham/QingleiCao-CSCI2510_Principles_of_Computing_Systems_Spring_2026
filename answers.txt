@@ -1,0 +1,5 @@
+1. wc -l access.log
+2. grep -c " 404 " access.log
+3. cut -d' ' -f1 access.log | sort | uniq -c | sort -rn | awk '{print $2" "$1}' | head -n3
+4. cut -d' ' -f3 access.log | sort -u
+5. cut -d' ' -f2 access.log | sort | uniq -c | sort -rn | awk '{print $2" "$1}'
