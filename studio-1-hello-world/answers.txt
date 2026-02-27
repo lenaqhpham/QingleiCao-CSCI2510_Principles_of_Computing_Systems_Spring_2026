@@ -1,0 +1,87 @@
+Lena Pham
+Answers generated using Copilot
+
+Exercise 2: Header files for fprintf()
+Answer: #include <stdio.h>
+
+Exercise 3: Difference between fprintf() and printf() signatures? 
+Answer: 
+fprintf() signature: int fprintf(FILE *stream, const char *format, ...);
+printf() signature: int printf(const char *format, ...);
+
+The difference is that fprintf() takes a FILE *stream as the first argument,
+which specifies where to write output. printf() only takes the format string
+and arguments, and always writes to stdout.
+
+Exercise 4: Difference between printf() and fprintf() functions?
+Answer:
+printf() writes formatted output to standard output (stdout).
+fprintf() writes formatted output to a specified file stream (which can be
+stdout, stderr, a file, or other I/O streams).
+
+In essence, fprintf() is a more general version of printf() that provides
+flexibility in choosing the output destination.
+
+Exercise 5: Running hello_fprintf.c
+Output:
+Hello, world!
+
+Exercise 7: Section number for system calls (man section)?
+Answer: 2
+(Section 2 contains system calls in the Linux man pages)
+
+Exercise 8: Header file for write() system call?
+Answer: #include <unistd.h>
+
+Exercise 9: Copying hello_fprintf.c to hello_write.c
+Answer: (blank as instructed)
+
+Exercise 11: Modified hello_write.c output
+Output:
+Hello, world!
+
+The program uses the write() system call instead of fprintf(). The key
+differences are:
+- Using STDOUT_FILENO instead of stdout file stream
+- Passing the number of bytes to write (using strlen)
+- write() is more low-level and byte-oriented
+
+Exercise 10: Changing the third argument of write() to a larger value?
+Answer:
+If you change the third argument of write() to a much larger number (like 1000
+or 10000), the behavior would be:
+- The write() function attempts to read and output beyond the bounds of the actual message buffer
+- This accesses uninitialized memory or data that doesn't belong to the intended message
+- Garbage characters or random data may appear in the output
+- This is undefined behavior in C and could potentially cause a segmentation fault or buffer overflow depending on memory layout
+
+This happens because write() doesn't know where the buffer ends - it blindly
+reads whatever number of bytes you tell it to. It trusts that you've given it
+a valid count.
+
+Exercise 11: When to use C library functions vs system calls?
+Answer:
+C Library Functions (like fprintf()):
+- Use when: You need portability across different operating systems
+- Use when: You want a higher-level, more convenient interface
+- Use when: Writing general-purpose code that isn't OS-specific
+- Advantages: Standardized, available everywhere, easier to use
+- Example: Most data processing, text formatting, math operations
+
+System Calls (like write()):
+- Use when: You need direct access to operating system features
+- Use when: Writing OS-specific code or kernel-level utilities
+- Use when: Performance is critical and you want minimal overhead
+- Use when: You need low-level control over I/O or system resources
+- Advantages: More control, potentially faster, direct OS functionality
+- Example: File system operations, process management, hardware access
+
+As a software developer, I would use C library functions for most application
+code to ensure portability and maintainability. I would use system calls when
+building system utilities, optimizing performance-critical sections, or when
+I specifically need features only the OS provides.
+
+Exercise 12: hello.sh created
+The script uses the echo command to print "Hello World!" to the terminal.
+Output:
+Hello World!
