@@ -1,0 +1,22 @@
+
+1. When you type `cat` and enter lines, each line you type is immediately echoed back to the terminal. The program reads from standard input and writes to standard output until you type CTRL-D, which ends the input.
+
+2. When you run `cat < mars.txt`, the contents of mars.txt are printed to the terminal. The program reads from the file instead of the keyboard.
+
+3. When you run `cat < mars.txt > new.txt`, the contents of mars.txt are written to new.txt. Opening new.txt shows it contains the same text as mars.txt.
+
+4. When you run `cat > new.txt` and type lines, each line you type is saved to new.txt. Typing CTRL-D ends the input. Opening new.txt shows the lines you entered.
+
+5. When you run `cat >> new.txt` and type lines, the lines you enter are appended to the end of new.txt, rather than overwriting it. Running the command multiple times keeps adding new lines to the file.
+
+6. To use `read()` and `write()`, you need to include the header file `<unistd.h>`.
+
+7. (No answer required)
+
+8. The return value type for `read()` is `ssize_t`. A return value of 0 indicates end of file.
+
+9. See copy.c for the implementation. The program reads from standard input into a buffer, writes the buffer to standard output, and stops when end of file is reached.
+
+10. Modifying `bufferSize` does not affect correctness, but if it is very small (e.g., 1), the program will make many more system calls and may be slower. If it is large, the program may use more memory, but will be more efficient. The output remains correct in both cases.
+
+11. A small buffer size means more system calls and slower performance, but less memory usage. A large buffer size means fewer system calls and better performance, but higher memory usage.
